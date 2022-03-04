@@ -36,7 +36,8 @@ class PostController extends Controller
     public function detailPost($slug = '')
     {
         $data['object'] = Post::whereSlug($slug)->firstOrFail();
-
+        $data['object']->increment('view_count');
+        
         return view('frontend.post.detail', $data);
     }
 }
