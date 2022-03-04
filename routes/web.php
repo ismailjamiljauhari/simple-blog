@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Author\PostController as AuthorPostController;
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +16,15 @@ use App\Http\Controllers\Author\PostController as AuthorPostController;
 */
 
 Route::get('/', [PostController::class, 'index'])->name('home');
-Route::get('/{slug}', [PostController::class, 'detailPost'])->name('post.detail');
+Route::get('/post/{slug}', [PostController::class, 'detailPost'])->name('post.detail');
 
 Auth::routes([
     'register' => false
 ]);
 
-Route::middleware(['auth'])->group(function () {
-    Route::resource('posts', AuthorPostController::class);
-    Route::get('posts/data/json', [AuthorPostController::class, 'getDatatable'])->name('posts.data');
+Route::get('logout', [LoginController::class, 'logout']);
+
+Route::prefix('author')->middleware(['auth'])->group(function () {
+    Route::resource('/posts', AuthorPostController::class);
+    Route::get('/posts/data/json', [AuthorPostController::class, 'getDatatable'])->name('posts.data');
 });
