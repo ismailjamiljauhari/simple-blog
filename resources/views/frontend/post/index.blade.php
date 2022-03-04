@@ -18,6 +18,9 @@
                     <a href="#!">{{ $post->user->name }}</a>
                     on {{ $post->publish_at->format('M d, Y H:i:s')}}
                 </p>
+                <p class="post-meta">
+                    {{ $post->view_count }} kali dilihat
+                </p>
             </div>
             <!-- Divider-->
             <hr class="my-4" />
