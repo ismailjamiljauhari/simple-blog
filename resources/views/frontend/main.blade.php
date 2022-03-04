@@ -29,7 +29,7 @@
                                 'category' => $category->category
                             ]) }}">{{ $category->category }}</a></li>
                         @endforeach
-                        @if (! \Auth::check())
+                        @if (!\Auth::check())
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('login')}}">Login</a></li>
                         @endif
                     </ul>

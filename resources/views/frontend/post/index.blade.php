@@ -1,7 +1,7 @@
 @extends('frontend.main', [
     'title' => 'Post',
     'withHeader' => true,
-]);
+])
 @section('content')
 <!-- Main Content-->
 <div class="container px-4 px-lg-5">
@@ -16,7 +16,7 @@
                 <p class="post-meta">
                     Posted by
                     <a href="#!">{{ $post->user->name }}</a>
-                    on {{ $post->publish_at->format('M d, Y H:i:s')}}
+                    on {{ $post->publish_at->format('M d, Y H:i:s') }}
                 </p>
                 <p class="post-meta">
                     {{ $post->view_count }} kali dilihat
