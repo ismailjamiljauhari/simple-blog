@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\Author\PostController as AuthorPostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,12 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PostController::class, 'index'])->name('home');
+Route::get('/{slug}', [PostController::class, 'detailPost'])->name('post.detail');
 
 Auth::routes([
     'register' => false
 ]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth'])->group(function () {
+    Route::resource('posts', AuthorPostController::class);
+    Route::get('posts/data/json', [AuthorPostController::class, 'getDatatable'])->name('posts.data');
+});

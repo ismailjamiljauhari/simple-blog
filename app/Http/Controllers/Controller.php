@@ -10,4 +10,11 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    //Message 
+    protected $messageSaved = 'Data successfully saved.';
+    protected $messageDeleted = 'Data successfully deleted.';
+
+    //Datatable
+    protected $datatableColumns;
 }

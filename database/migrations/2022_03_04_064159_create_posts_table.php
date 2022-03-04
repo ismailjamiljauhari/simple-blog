@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('user_id')->reference('id')->on('users');
             $table->string('image')->nullable();
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->text('content');
             $table->string('publish_at');
             $table->string('category')->nullable();

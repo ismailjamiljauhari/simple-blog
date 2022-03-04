@@ -10,12 +10,11 @@
 @if (session('status'))
     @push('before_scripts')
         <script>
-            Swal.fire({
-                imageUrl: '{{ asset('frontend/images/bg-thankyou2.png') }}',
-                imageHeight: 500,
-                showConfirmButton: false,
-                showCloseButton: true
-            })
+        Swal.fire({
+            type: 'success',
+            title: 'Success',
+            text: '{{ session('status') }}'
+        })
         </script>
 
     @endpush
